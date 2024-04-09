@@ -1,6 +1,6 @@
 import FormArea from "@/components/parts/FormArea";
 import FormInput from "@/components/parts/FormInput";
-import FormSelect from "@/components/parts/FormSelect";
+import FormSelect from "@/components/parts/CustomComboBox";
 import Navigation from "@/components/parts/Navigation";
 import { Button } from "@/components/ui/button";
 
