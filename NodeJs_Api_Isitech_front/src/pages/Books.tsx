@@ -121,9 +121,7 @@ export const columns: ColumnDef<Books>[] = [
     id: "actions",
     header: "Actions",
     enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original;
-
+    cell: () => {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -134,14 +132,8 @@ export const columns: ColumnDef<Books>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>Remove Book</DropdownMenuItem>
+            <DropdownMenuItem>Update Book</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -187,7 +179,7 @@ export default function Books() {
 
   return (
     <div className="w-full px-10 py-5">
-      <div className="grid grid-cols-[250px,1fr]">
+      <div className="grid grid-cols-[300px,1fr]">
         <Navigation />
         <div>
           <div className="flex items-center pb-4">
