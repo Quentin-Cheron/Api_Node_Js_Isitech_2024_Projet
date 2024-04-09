@@ -30,7 +30,7 @@ import categoriesRoutes from "./routes/route.categories.js";
 import authRoutes from "./routes/route.auth.js";
 
 app.use("/books", booksRoutes);
-app.use("/categories", isAuth, categoriesRoutes);
+app.use("/categories", categoriesRoutes);
 app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 3001;

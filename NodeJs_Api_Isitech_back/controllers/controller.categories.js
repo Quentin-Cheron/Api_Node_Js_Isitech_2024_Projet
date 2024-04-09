@@ -1,5 +1,9 @@
+import db from "../models/index.js";
+const categories = db.Categories;
+
 const getCategories = async (req, res) => {
-  res.json({ categories: "zachary" });
+  const allCategories = await categories.find({});
+  res.json(allCategories);
 };
 
 export default { getCategories };
