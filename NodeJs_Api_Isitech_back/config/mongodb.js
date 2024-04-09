@@ -8,7 +8,7 @@ const db = mongoose.connection;
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log("Connected to MongoDB");
+  console.log("Connected to MongoDB" + " " + mongoose.modelNames());
 });
 
 //Bind connection to error event (to get notification of connection errors)

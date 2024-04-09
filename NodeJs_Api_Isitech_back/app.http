@@ -1,0 +1,13 @@
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+
+{
+    "email": "Quentin.cheron26200@gmail.com",
+    "password": "Admin12!",
+    "name": "Quentin"
+}
+
+### 
+
+GET http://localhost:3000/categories
