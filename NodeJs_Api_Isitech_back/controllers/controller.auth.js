@@ -5,15 +5,15 @@ import bcrypt from "bcryptjs";
 
 const signin = async (req, res, next) => {
   try {
-    const { email, password, name, phoneNumber } = req.body;
+    const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!user) {
       return res.status(404).json({ message: "User doesn't exist" });
     }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) {
       return res.status(400).json({ message: "Invalid credentials" });

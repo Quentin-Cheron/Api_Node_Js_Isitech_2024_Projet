@@ -4,23 +4,26 @@ export default async function (req, res, next) {
   try {
     const header = req.header("Authorization");
 
-    const array = header.split(" ");
+    const array = header?.split(" ");
 
-    if (array.length !== 2) {
-      return res.status(401).json({ message: "Access denied" });
+    if (array?.length !== 2) {
+      return res.redirect("http://localhost:5173/signin", 302);
     }
 
     const token = array[1];
 
     if (!token) {
-      return res.status(401).json({ message: "Access denied" });
+      return res.redirect("http://localhost:5173/signin", 302);
     }
 
     let decodedData;
 
-    decodedData = jwt.verify(token, process.env.JWT_SECRET);
-
-    req.user = decodedData;
+    try {
+      decodedData = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decodedData;
+    } catch (error) {
+      return res.redirect("http://localhost:5173/signin", 302);
+    }
 
     next();
   } catch (error) {

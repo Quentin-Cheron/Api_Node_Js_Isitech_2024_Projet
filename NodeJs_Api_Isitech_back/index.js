@@ -29,9 +29,13 @@ import booksRoutes from "./routes/route.books.js";
 import categoriesRoutes from "./routes/route.categories.js";
 import authRoutes from "./routes/route.auth.js";
 
-app.use("/books", booksRoutes);
-app.use("/categories", categoriesRoutes);
+app.use("/books", isAuth, booksRoutes);
+app.use("/categories", isAuth, categoriesRoutes);
 app.use("/auth", authRoutes);
+
+app.get("/protected", isAuth, (req, res) => {
+  res.send("Hello World");
+});
 
 const PORT = process.env.PORT || 3001;
 
