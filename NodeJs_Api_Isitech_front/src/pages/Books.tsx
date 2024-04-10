@@ -22,7 +22,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -37,6 +36,8 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
+  SelectLabel,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -47,6 +48,7 @@ import Navigation from "@/components/parts/Navigation";
 // Services
 
 import BooksService from "@/services/books.service.js";
+import CategoriesService from "@/services/categories.service.js";
 
 export type Books = {
   id: number;
@@ -143,6 +145,7 @@ export const columns: ColumnDef<Books>[] = [
 
 export default function Books() {
   const [books, setBooks] = React.useState<Books[]>([]);
+  const [categories, setCategories] = React.useState<string[]>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -173,7 +176,9 @@ export default function Books() {
   React.useEffect(() => {
     (async () => {
       const books = await BooksService.getAllBooks();
+      const categories = await CategoriesService.getAllCategories();
       setBooks(books);
+      setCategories(categories);
     })();
   }, []);
 
@@ -182,21 +187,28 @@ export default function Books() {
       <div className="grid grid-cols-[300px,1fr]">
         <Navigation />
         <div>
-          <div className="flex items-center pb-4">
-            <Input
-              placeholder="Filter categories..."
-              value={
-                (table.getColumn("categories")?.getFilterValue() as string) ??
-                ""
-              }
-              onChange={(event) =>
-                table
-                  .getColumn("categories")
-                  ?.setFilterValue(event.target.value)
-              }
-              className="max-w-sm"
-            />
-          </div>
+          <Select
+            onValueChange={(event) =>
+              table
+                .getColumn("categories")
+                ?.setFilterValue(event === "none" ? "" : event)
+            }
+          >
+            <SelectTrigger className="w-[300px] mb-4">
+              <SelectValue placeholder="Select a categorie" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Filter categories...</SelectLabel>
+                <SelectItem value="none">All</SelectItem>
+                {categories.map((category) => (
+                  <SelectItem key={category.label} value={category.label}>
+                    {category.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
           <div className="flex items-center pb-4">
             <Input
               placeholder="Filter books..."

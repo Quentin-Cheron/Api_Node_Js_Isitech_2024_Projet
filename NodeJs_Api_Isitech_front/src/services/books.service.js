@@ -6,8 +6,6 @@ const getAllBooks = async () => {
     const response = await fetch(API_URL_GET_ALL_BOOKS, {
       method: "GET",
     });
-    // const data = await response.json();
-    // return data;
 
     const data = await response.json();
     return data;
