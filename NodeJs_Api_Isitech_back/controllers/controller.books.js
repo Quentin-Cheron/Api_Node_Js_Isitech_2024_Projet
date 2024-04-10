@@ -10,6 +10,18 @@ const getBooks = async (req, res) => {
   res.json(books);
 };
 
+const getBookById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const book = await Books.findById(id);
+
+    res.json(book);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const createBook = async (req, res) => {
   try {
     const { title, author, categories, description } = req.body;
@@ -42,6 +54,7 @@ const deleteBook = async (req, res) => {
 };
 
 const updateBook = async (req, res) => {
+  console.log(req.body);
   try {
     const { id } = req.params;
     const { title, author, categories, description } = req.body;
@@ -57,4 +70,4 @@ const updateBook = async (req, res) => {
   }
 };
 
-export default { getBooks, createBook, deleteBook, updateBook };
+export default { getBooks, createBook, deleteBook, updateBook, getBookById };
