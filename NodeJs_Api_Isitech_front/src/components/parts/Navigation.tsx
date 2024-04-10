@@ -57,6 +57,27 @@ export default function Navigation() {
               </AccordionItem>
             </Accordion>
           </li>
+          <li>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Auth</AccordionTrigger>
+                <AccordionContent>
+                  <ul className="grid gap-3">
+                    <li>
+                      <Link to="/signup" className="hover:underline">
+                        Sign up
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/signin" className="hover:underline">
+                        Sign in
+                      </Link>
+                    </li>
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </li>
         </ul>
       </nav>
     </header>

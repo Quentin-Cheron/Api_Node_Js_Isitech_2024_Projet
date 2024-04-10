@@ -1,38 +1,58 @@
-import FormArea from "@/components/parts/FormArea";
-import FormInput from "@/components/parts/FormInput";
-import FormSelect from "@/components/parts/CustomComboBox";
-import Navigation from "@/components/parts/Navigation";
-import { Button } from "@/components/ui/button";
+import React, { useState, useEffect } from "react";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, set } from "react-hook-form";
+
+// Custom Components
+
+import FormInput from "@/components/parts/FormInput";
+import FormArea from "@/components/parts/FormArea";
+import FormSelect from "@/components/parts/CustomComboBox";
+
+import Navigation from "@/components/parts/Navigation";
+
+// Shadcn Components
+
+import { Button } from "@/components/ui/button";
 
 // Services
 
 import CategoriesService from "@/services/categories.service.js";
 import BooksService from "@/services/books.service.js";
+import { useParams } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-
-const AddBook = () => {
+const UpdateBook = () => {
   const [categories, setCategories] = useState<object[]>([]);
+  const [book, setBook] = useState<object>({});
+  const params = useParams();
+  const [defaultValues, setDefaultValues] = useState<object>({});
   const {
     register,
     handleSubmit,
     control,
     getValues,
+    setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues,
+  });
 
   useEffect(() => {
     (async () => {
       const categoriesResponse = await CategoriesService.getAllCategories();
+      const book = await BooksService.getBookById(params.id);
+      setBook(book);
       setCategories(categoriesResponse);
+      setValue("title", book.label);
+      setValue("author", book.author);
+      setValue("description", book.description);
+      setValue("categories", [book.categories]);
     })();
   }, []);
 
-  const onSubmit = (data: object) => {
-    BooksService.createBook(data);
-    console.log(data);
+  // OnSubmit
+
+  const onSubmit = async (data: object) => {
+    await BooksService.updateBook(params.id, data);
   };
 
   return (
@@ -112,4 +132,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default UpdateBook;
