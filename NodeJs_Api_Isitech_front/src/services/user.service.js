@@ -25,12 +25,21 @@ const signin = async (user) => {
       },
       body: JSON.stringify(user),
     });
-    return response.json();
+    const result = await response.json();
+
+    localStorage.setItem("user", result.result);
+    return result;
   } catch (error) {
     console.error("Error:", error);
   }
 };
 
+const getCurrentUser = () => {
+  return localStorage.getItem("user");
+};
+
 export default {
   signup,
+  signin,
+  getCurrentUser,
 };
