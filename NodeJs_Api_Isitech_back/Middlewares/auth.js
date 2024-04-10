@@ -6,14 +6,23 @@ export default async function (req, res, next) {
 
     const array = header?.split(" ");
 
+    const errorAuth = {
+      message: "Authentication failed, redirect to signin",
+      redirectUrl: "http://localhost:5173/signin",
+    };
+
     if (array?.length !== 2) {
-      return res.redirect("http://localhost:5173/signin", 302);
+      if (array?.length !== 2 || !token || !decodedData) {
+        return res.status(401).json(errorAuth);
+      }
     }
 
     const token = array[1];
 
     if (!token) {
-      return res.redirect("http://localhost:5173/signin", 302);
+      if (array?.length !== 2 || !token || !decodedData) {
+        return res.status(401).json(errorAuth);
+      }
     }
 
     let decodedData;
@@ -22,7 +31,9 @@ export default async function (req, res, next) {
       decodedData = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decodedData;
     } catch (error) {
-      return res.redirect("http://localhost:5173/signin", 302);
+      if (array?.length !== 2 || !token || !decodedData) {
+        return res.status(401).json(errorAuth);
+      }
     }
 
     next();

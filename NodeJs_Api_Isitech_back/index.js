@@ -1,41 +1,12 @@
-import express from "express";
+import CreateApp from "./app.js";
 import dotenv from "dotenv";
-import cors from "cors";
-import bodyParser from "body-parser";
 
-// Middleware
-import isAuth from "./Middlewares/auth.js";
-// Express configuration
+const app = CreateApp();
 
 dotenv.config();
-const app = express();
-
-const corsOptions = {
-  origin: process.env.CLIENT_URL,
-};
-
-app.use(cors(corsOptions));
-app.use(express.json());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database connection
 import "./config/mongodb.js";
-
-// Routes
-
-import booksRoutes from "./routes/route.books.js";
-import categoriesRoutes from "./routes/route.categories.js";
-import authRoutes from "./routes/route.auth.js";
-
-app.use("/books", isAuth, booksRoutes);
-app.use("/categories", isAuth, categoriesRoutes);
-app.use("/auth", authRoutes);
-
-app.get("/protected", isAuth, (req, res) => {
-  res.send("Hello World");
-});
 
 const PORT = process.env.PORT || 3001;
 
