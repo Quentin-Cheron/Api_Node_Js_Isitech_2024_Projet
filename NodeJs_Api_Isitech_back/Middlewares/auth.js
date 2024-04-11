@@ -9,11 +9,12 @@ export default async function (req, res, next) {
     const errorAuth = {
       message: "Authentication failed, redirect to signin",
       redirectUrl: "http://localhost:5173/signin",
+      success: false,
     };
 
     if (array?.length !== 2) {
       if (array?.length !== 2 || !token || !decodedData) {
-        return res.status(401).json(errorAuth);
+        return res.json(errorAuth);
       }
     }
 
@@ -21,7 +22,7 @@ export default async function (req, res, next) {
 
     if (!token) {
       if (array?.length !== 2 || !token || !decodedData) {
-        return res.status(401).json(errorAuth);
+        return res.json(errorAuth);
       }
     }
 
@@ -32,7 +33,7 @@ export default async function (req, res, next) {
       req.user = decodedData;
     } catch (error) {
       if (array?.length !== 2 || !token || !decodedData) {
-        return res.status(401).json(errorAuth);
+        return res.json(errorAuth);
       }
     }
 
