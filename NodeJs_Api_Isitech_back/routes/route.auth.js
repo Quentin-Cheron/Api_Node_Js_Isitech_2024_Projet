@@ -7,15 +7,25 @@ import authController from "../controllers/controller.auth.js";
 
 router.post(
   "/signin",
-  body("email").isEmail().withMessage("Invalid email"),
+  body("email").isEmail().withMessage("Email is not valid"),
   body("password")
     .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters long")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-    ),
+    .withMessage(
+      "Password must contain at least 8 characters, including letters and numbers and special characters"
+    )
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/),
   authController.signin
 );
-router.post("/signup", authController.signup);
+router.post(
+  "/signup",
+  body("email").isEmail().withMessage("Email is not valid"),
+  body("password")
+    .isLength({ min: 6 })
+    .withMessage(
+      "Password must contain at least 8 characters, including letters and numbers and special characters"
+    )
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/),
+  authController.signup
+);
 
 export default router;
