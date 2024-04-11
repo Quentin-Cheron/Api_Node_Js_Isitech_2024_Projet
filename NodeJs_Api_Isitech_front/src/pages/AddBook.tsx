@@ -75,7 +75,7 @@ const AddBook = () => {
               Controller={Controller}
               control={control}
               placeholder="Select Categorie ..."
-              data={categories.map(
+              data={(categories.length > 0 ? categories : []).map(
                 (category: { label: string }) => category.label
               )}
               getValues={getValues}

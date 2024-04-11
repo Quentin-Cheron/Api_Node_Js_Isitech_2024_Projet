@@ -16,12 +16,7 @@ const getAllBooks = async () => {
 
     const data = await response.json();
 
-    if (response.status === 401) {
-      localStorage.removeItem("user");
-      window.location.href = "/signin";
-    } else {
-      return data;
-    }
+    return data;
   } catch (error) {
     console.error("Error fetching books", error);
   }
@@ -39,6 +34,7 @@ const getBookById = async (bookId) => {
     });
 
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error("Error fetching book", error);
@@ -59,12 +55,8 @@ const createBook = async (book) => {
     });
 
     const data = await response.json();
-    if (response.status === 401) {
-      localStorage.removeItem("user");
-      window.location.href = "/signin";
-    } else {
-      return data;
-    }
+
+    return data;
   } catch (error) {
     console.error("Error adding book", error);
   }
@@ -80,12 +72,8 @@ const removeBook = async (bookId) => {
     });
 
     const data = await response.json();
-    if (response.status === 401) {
-      localStorage.removeItem("user");
-      window.location.href = "/signin";
-    } else {
-      return data;
-    }
+
+    return data;
   } catch (error) {
     console.error("Error removing book", error);
   }
@@ -106,12 +94,8 @@ const updateBook = async (bookId, book) => {
     });
 
     const data = await response.json();
-    if (response.status === 401) {
-      localStorage.removeItem("user");
-      window.location.href = "/signin";
-    } else {
-      return data;
-    }
+
+    return data;
   } catch (error) {
     console.error("Error updating book", error);
   }

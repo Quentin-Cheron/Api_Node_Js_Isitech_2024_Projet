@@ -73,7 +73,7 @@ export default function Books() {
   const [rowSelection, setRowSelection] = useState({});
 
   const removeBook = async (id: string) => {
-    const result = await BooksService.removeBook(id);
+    await BooksService.removeBook(id);
     const books = await BooksService.getAllBooks();
     setBooks(books);
   };
