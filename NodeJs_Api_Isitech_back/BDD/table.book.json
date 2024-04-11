@@ -1,0 +1,103 @@
+[{
+    "_id": {
+      "$oid": "661518b43ce31cbd53b5c34f"
+    },
+    "label": "Jade OK",
+    "categories": "Fantasy",
+    "author": "Natsuo Kirino",
+    "description": "zdz"
+  },
+  {
+    "_id": {
+      "$oid": "661518b73ce31cbd53b5c351"
+    },
+    "label": "Rebecca",
+    "categories": "Mystery"
+  },
+  {
+    "_id": {
+      "$oid": "661518b93ce31cbd53b5c353"
+    },
+    "label": "The Guest List",
+    "categories": "Mystery"
+  },
+  {
+    "_id": {
+      "$oid": "661518bb3ce31cbd53b5c355"
+    },
+    "label": "The Housemaid",
+    "categories": "Thriller"
+  },
+  {
+    "_id": {
+      "$oid": "661518be3ce31cbd53b5c357"
+    },
+    "label": "The Silent Patient",
+    "categories": "Thriller"
+  },
+  {
+    "_id": {
+      "$oid": "661518c03ce31cbd53b5c359"
+    },
+    "label": "Never Lie",
+    "categories": "Thriller"
+  },
+  {
+    "_id": {
+      "$oid": "661518c33ce31cbd53b5c35b"
+    },
+    "label": "The Guns of August",
+    "categories": "History"
+  },
+  {
+    "_id": {
+      "$oid": "661518c63ce31cbd53b5c35d"
+    },
+    "label": "Plagues and Peoples",
+    "categories": "History"
+  },
+  {
+    "_id": {
+      "$oid": "661518ca3ce31cbd53b5c35f"
+    },
+    "label": "test",
+    "categories": "Romance"
+  },
+  {
+    "_id": {
+      "$oid": "661518cc3ce31cbd53b5c361"
+    },
+    "label": "The Love Hypothesis",
+    "categories": "Romance"
+  },
+  {
+    "_id": {
+      "$oid": "661518cf3ce31cbd53b5c363"
+    },
+    "label": "Twisted Love",
+    "categories": "Romance"
+  },
+  {
+    "_id": {
+      "$oid": "661518d13ce31cbd53b5c365"
+    },
+    "label": "Dune",
+    "categories": "Science Fiction"
+  },
+  {
+    "_id": {
+      "$oid": "661518d53ce31cbd53b5c367"
+    },
+    "label": "Hypérion",
+    "categories": "Science Fiction"
+  },
+  {
+    "_id": {
+      "$oid": "6616547d614e6497b38cec72"
+    },
+    "label": "Out",
+    "categories": "Mystery",
+    "author": "Natsuo Kirino",
+    "description": "MAIS SISIIIac",
+    "__v": 0
+  }]

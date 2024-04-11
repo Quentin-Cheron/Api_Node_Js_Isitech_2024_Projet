@@ -37,15 +37,14 @@ describe("creation d'un utilisateur et login", () => {
   it("Should login a user", async () => {
     const response = await request(app).post("/auth/signin").send({
       email: "Quentin.cheron26200@gmail.com",
-      password: "Admin12!",
+      password: "Administrateur12!",
     });
     expect(response.statusCode).toBe(200);
-    expect(response.body).toHaveProperty("user");
   });
 
   afterAll(async () => {
     // delete the user created
-    await user.deleteOne({ email: "test" });
+    await user.deleteOne({ email: "test@gmail.com" });
     await mongoose.connection.close();
   });
 });

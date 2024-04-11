@@ -3,6 +3,7 @@ import routes from "./routes/index.js";
 import cors from "cors";
 import bodyParser from "body-parser";
 import multer from "multer";
+import swagger from "./swagger.js";
 
 import errorMessage from "./middlewares/error.js";
 
@@ -20,6 +21,8 @@ export default function CreateApp() {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.use(errorMessage.handleUncaughtErrors);
+
+  swagger(app);
 
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {

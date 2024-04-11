@@ -1,0 +1,36 @@
+[{
+    "_id": {
+      "$oid": "661517073ce31cbd53b5c33b"
+    },
+    "label": "Mystery"
+  },
+  {
+    "_id": {
+      "$oid": "661517163ce31cbd53b5c33d"
+    },
+    "label": "Fantasy"
+  },
+  {
+    "_id": {
+      "$oid": "6615173b3ce31cbd53b5c33f"
+    },
+    "label": "Thriller"
+  },
+  {
+    "_id": {
+      "$oid": "661517473ce31cbd53b5c341"
+    },
+    "label": "History"
+  },
+  {
+    "_id": {
+      "$oid": "661517523ce31cbd53b5c343"
+    },
+    "label": "Romance"
+  },
+  {
+    "_id": {
+      "$oid": "661517693ce31cbd53b5c345"
+    },
+    "label": "Science Fiction"
+  }]

@@ -21,10 +21,10 @@ router.post(
   body("email").isEmail().withMessage("Email is not valid"),
   body("password")
     .isLength({ min: 6 })
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
     .withMessage(
       "Password must contain at least 8 characters, including letters and numbers and special characters"
-    )
-    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/),
+    ),
   authController.signup
 );
 
