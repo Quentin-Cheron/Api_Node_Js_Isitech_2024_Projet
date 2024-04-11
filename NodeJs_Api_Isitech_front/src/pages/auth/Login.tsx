@@ -42,10 +42,18 @@ const Login = () => {
             errors={errors}
             label="password"
             content="Password"
+            type="password"
             validation={{
               required: {
                 value: true,
                 message: "Password is required",
+              },
+              // Password must contain at least 8 characters, including letters and numbers and special characters
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                message:
+                  "Password must contain at least 8 characters, including letters and numbers and special characters",
               },
             }}
           />

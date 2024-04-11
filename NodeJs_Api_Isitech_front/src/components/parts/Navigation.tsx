@@ -39,27 +39,6 @@ export default function Navigation() {
           <li>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger>Categories</AccordionTrigger>
-                <AccordionContent>
-                  <ul className="grid gap-3">
-                    <li>
-                      <Link to="/categories" className="hover:underline">
-                        All Categories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/add/categories" className="hover:underline">
-                        Add a new Categories
-                      </Link>
-                    </li>
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </li>
-          <li>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
                 <AccordionTrigger>Auth</AccordionTrigger>
                 <AccordionContent>
                   <ul className="grid gap-3">

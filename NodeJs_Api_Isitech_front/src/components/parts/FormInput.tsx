@@ -7,12 +7,14 @@ const FormInput = ({
   register,
   errors,
   validation,
+  type,
 }: {
   label: string;
   content: string;
   register?: any;
   errors?: any;
   validation?: object;
+  type?: string;
 }) => {
   return (
     <div className="mt-2">
@@ -20,6 +22,7 @@ const FormInput = ({
       <Input
         name={label}
         id={label}
+        type={type || "text"}
         {...(register ? register(label, validation) : {})}
       ></Input>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "./parts/loader/Loader";
+import LoadingPage from "./parts/loader/LoadingPage";
 
 function DelayedFallback({
   delay,
@@ -34,14 +35,13 @@ function DelayedFallback({
         }
       })
       .catch((error) => {
-        console.error(error);
         navigate("/signin");
       });
 
     return () => clearTimeout(timer);
   }, [delay, fetch, navigate]);
 
-  return show ? fallback : <Loader />;
+  return <LoadingPage delay={delay}>{fallback}</LoadingPage>;
 }
 
 export default DelayedFallback;

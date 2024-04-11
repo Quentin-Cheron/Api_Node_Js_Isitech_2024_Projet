@@ -57,10 +57,17 @@ const Register = () => {
               errors={errors}
               label="password"
               content="Password"
+              type="password"
               validation={{
                 required: {
                   value: true,
                   message: "Password is required",
+                },
+                pattern: {
+                  value:
+                    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                  message:
+                    "Password must contain at least 8 characters, including letters and numbers and special characters",
                 },
               }}
             />
@@ -73,6 +80,10 @@ const Register = () => {
                 required: {
                   value: true,
                   message: "Email is required",
+                },
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Email is not valid",
                 },
               }}
             />
