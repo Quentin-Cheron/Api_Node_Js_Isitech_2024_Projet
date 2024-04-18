@@ -78,6 +78,15 @@ Pour exécuter les tests unitaires, exécutez la commande suivante :
 Pour tester les tests unitaire de l'authentification,
 il faut ajouter son token dans la variable token dans le fichier de test.
 
+## Utilisateur
+
+Pour vous connecter à l'application, les fichiers json des utilisateurs sont dans le dossier BDD à la racine.
+
+Une fois importé dans la base de donnée, vous pouvez vous connecter avec les identifiants suivants :
+
+- email : user@gmail.com
+- password : username12! (il est crypté dans la base de donnée)
+
 ## Fichier à ajouter
 
 Ajouter le fichier `.env` à la racine et ajouter à l'intérieur :

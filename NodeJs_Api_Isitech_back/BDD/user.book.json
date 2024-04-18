@@ -1,20 +1,11 @@
-[{
-    "_id": {
-      "$oid": "6617ad9f7d3edf73dce470f3"
-    },
-    "email": "Quentin.cheron26200@gmail.com",
-    "password": "$2a$12$iKISS7uJ.Xyo4Re0EHAOueticvt7ppvt6PJZPrPkICFn8WubYkU5G",
-    "name": "Thomas",
-    "phoneNumber": "0616085393",
-    "__v": 0
-  },
+[
   {
     "_id": {
       "$oid": "6617adc57d3edf73dce470f6"
     },
-    "email": "aaaaaaa@gmail.com",
+    "email": "user@gmail.com",
     "password": "$2a$12$kCJ/8rap/eQSVNcIChntSup4CC86EmDD6OD7BhcQYKSDEzDOAuEQW",
-    "name": "Thomas",
-    "phoneNumber": "0616085393",
+    "name": "user",
+    "phoneNumber": "1111111111",
     "__v": 0
   }]
