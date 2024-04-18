@@ -2,6 +2,8 @@ import db from "../models/index.js";
 const Books = db.Books;
 const Categories = db.Categories;
 
+// function to get all books
+
 const getBooks = async (req, res) => {
   const books = await Books.find({});
 
@@ -9,6 +11,8 @@ const getBooks = async (req, res) => {
 
   res.json(books);
 };
+
+// function to get a book by id
 
 const getBookById = async (req, res) => {
   try {
@@ -21,6 +25,8 @@ const getBookById = async (req, res) => {
     console.log(error);
   }
 };
+
+// function to create a book
 
 const createBook = async (req, res) => {
   try {
@@ -41,6 +47,8 @@ const createBook = async (req, res) => {
   }
 };
 
+// function to delete a book
+
 const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
@@ -53,8 +61,9 @@ const deleteBook = async (req, res) => {
   }
 };
 
+// function to update a book
+
 const updateBook = async (req, res) => {
-  console.log(req.body);
   try {
     const { id } = req.params;
     const { title, author, categories, description } = req.body;

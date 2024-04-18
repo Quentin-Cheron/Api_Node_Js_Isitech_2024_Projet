@@ -8,14 +8,19 @@ import swagger from "./swagger.js";
 import errorMessage from "./middlewares/error.js";
 
 export default function CreateApp() {
+  // configure the express server
   const app = express();
 
   app.use(express.json());
+
+  // configure cors
 
   const corsOptions = {
     origin: process.env.CLIENT_URL,
   };
   app.use(cors(corsOptions));
+
+  // configure body parser
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,6 +28,8 @@ export default function CreateApp() {
   app.use(errorMessage.handleUncaughtErrors);
 
   swagger(app);
+
+  // configure multer
 
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -35,7 +42,7 @@ export default function CreateApp() {
 
   const upload = multer({ storage: storage });
 
-  app.post("/photos/upload", upload.array("photos", 12), (req, res, next) => {
+  app.post("/files/upload", upload.array("file", 12), (req, res, next) => {
     const fileNames = req.files.map((file) => file.filename);
     res.send(fileNames);
   });

@@ -3,6 +3,8 @@ import User from "../models/model.user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+// function to sign in a user
+
 const signin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -32,6 +34,8 @@ const signin = async (req, res, next) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// function to sign up a user
 
 const signup = async (req, res) => {
   try {

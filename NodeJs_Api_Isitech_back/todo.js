@@ -5,7 +5,6 @@ const getAllTodo = (req, res) => {
 };
 
 const create = (req, res) => {
-  console.log(req.body);
   const todo = req.body;
   todos.push(todo);
   res.send(todo);
