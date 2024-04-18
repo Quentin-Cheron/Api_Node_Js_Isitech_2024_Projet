@@ -12,16 +12,9 @@ function DelayedFallback({
   fallback: React.ReactNode;
   fetch: (() => Promise<any>)[];
 }) {
-  const [show, setShow] = useState(false);
-  const [result, setResult] = useState(null);
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShow(true);
-    }, delay);
-
     Promise.all(fetch.map((service) => service))
       .then((responses) => {
         const allSuccessful = responses.every(
@@ -30,15 +23,11 @@ function DelayedFallback({
 
         if (!allSuccessful) {
           navigate("/signin");
-        } else {
-          setResult(responses);
         }
       })
       .catch((error) => {
         navigate("/signin");
       });
-
-    return () => clearTimeout(timer);
   }, [delay, fetch, navigate]);
 
   return <LoadingPage delay={delay}>{fallback}</LoadingPage>;

@@ -1,6 +1,8 @@
 const API_URL_SIGNUP = "http://localhost:3000/auth/signup";
 const API_URL_SIGNIN = "http://localhost:3000/auth/signin";
 
+// Fetch function to sign up a user
+
 const signup = async (user) => {
   try {
     const response = await fetch(API_URL_SIGNUP, {
@@ -15,6 +17,8 @@ const signup = async (user) => {
     console.error("Error:", error);
   }
 };
+
+// Fetch function to sign in a user
 
 const signin = async (user) => {
   try {
@@ -33,6 +37,8 @@ const signin = async (user) => {
     console.error("Error:", error);
   }
 };
+
+// Function to get the current user
 
 const getCurrentUser = () => {
   return localStorage.getItem("user");
